@@ -43,7 +43,7 @@ class stack:
         """
         Разрушить стек
         """
-        self.__stack = []
+        del self
 
     def __str__(self) -> str:
         """
