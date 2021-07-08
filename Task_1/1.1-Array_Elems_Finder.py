@@ -1,6 +1,6 @@
 import time
 
-def finder(arr: list, sought: int):
+def finder(arr: list, sought: int) -> float:
     """
     Поиск элементов в массиве путем перебора.
     Средняя выч. сложность - Θ(n)

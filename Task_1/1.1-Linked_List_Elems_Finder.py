@@ -1,8 +1,9 @@
 import time
+from typing import Any
 
 class Node:
 
-	def __init__(self, data=None, next=None):
+	def __init__(self, data=None, next=None) -> None:
 		"""
 		Узел
 		"""
@@ -12,7 +13,7 @@ class Node:
 
 class LinkedList:
 
-	def __init__(self):
+	def __init__(self) -> None:
 		"""
 		Инициализация списка
 		"""
@@ -21,7 +22,7 @@ class LinkedList:
 		self.length = 0
 
 
-	def __getitem__(self, attr):
+	def __getitem__(self, attr) -> Any:
 		"""
 		Получение элемента по индексу
 		"""
@@ -46,7 +47,7 @@ class LinkedList:
 				self.first = self.first.next
 
 
-	def __str__(self):
+	def __str__(self) -> str:
 		"""
 		Метод печати списка
 		"""
@@ -67,14 +68,14 @@ class LinkedList:
 		return out + ']'
 
 
-	def clear(self):
+	def clear(self) -> None:
 		"""
 		Очистка списка
 		"""
 		self.__init__()
 
 
-	def append(self, data):
+	def append(self, data) -> None:
 		"""
 		Метод добавления элемента в список
 		"""
@@ -86,7 +87,7 @@ class LinkedList:
 			self.last.next = self.last = Node(data=data, next=None)
 	
 
-	def finder(self, sought):
+	def finder(self, sought) -> float:
 		"""
     	Поиск элементов в односвязном списке путем перебора.
     	Средняя выч. сложность - Θ(n)
