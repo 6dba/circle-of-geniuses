@@ -26,6 +26,4 @@ def fibonacci(n: int) -> Any:
 
     # c21 = a21 · b11 + a22 · b21 = 1 · 1 + 2 · 1 = 1 + 2 = 3
 
-    print((666**777) % 5)
-
     return matrix([[0,1], [1,1]])**n * matrix([[1,1]]).T
