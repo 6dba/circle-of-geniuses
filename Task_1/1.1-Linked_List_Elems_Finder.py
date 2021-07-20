@@ -1,6 +1,7 @@
 import time
 from typing import Any
 
+
 class Node:
 
 	def __init__(self, data=None, next=None) -> None:
@@ -20,7 +21,6 @@ class LinkedList:
 		self.first = None
 		self.last = None
 		self.length = 0
-
 
 	def __getitem__(self, attr) -> Any:
 		"""
@@ -46,7 +46,6 @@ class LinkedList:
 				length += 1
 				self.first = self.first.next
 
-
 	def __str__(self) -> str:
 		"""
 		Метод печати списка
@@ -67,13 +66,11 @@ class LinkedList:
 				out += str(self.first.data)
 		return out + ']'
 
-
 	def clear(self) -> None:
 		"""
 		Очистка списка
 		"""
 		self.__init__()
-
 
 	def append(self, data) -> None:
 		"""
@@ -85,21 +82,22 @@ class LinkedList:
 			self.first = self.last = Node(data=data, next=None)
 		else:
 			self.last.next = self.last = Node(data=data, next=None)
-	
 
-	def finder(self, sought) -> float:
+	def finder(self, sought) -> str:
 		"""
-    	Поиск элементов в односвязном списке путем перебора.
-    	Средняя выч. сложность - Θ(n)
-    	"""
-		start_time = time.perf_counter()
+		Поиск элементов в односвязном списке путем перебора.
+		Средняя выч. сложность - Θ(n)
+		"""
+		start_time = time.perf_counter_ns()
+		counter = 0
 
 		if self.length != 0:
 			while self.first:
+				counter += 1
 				if self.first.data == sought:
 					break
 				self.first = self.first.next
-		return time.perf_counter() - start_time
+		return 'Затраченное время ns: ' + str(time.perf_counter_ns() - start_time) + '; Количество итераций: ' + str(counter)
 
 
 list = LinkedList()
@@ -108,16 +106,14 @@ for num in range(10):
 	list.append(num)
 
 # Допустим, что искомый элемент, оказался первым
-print("Поиск перебором. Сложность - Θ(1): ", list.finder(1))
+print("Поиск перебором. Сложность - Θ(1):\n\n", list.finder(0),'\n')
 	
 # Элемента не оказалось
-print("Поиск перебором. Сложность - Θ(N): ", list.finder(666))
+print("Поиск перебором. Сложность - Θ(N):\n\n", list.finder(666),'\n')
 
-# Аналогично поиску перебором в массиве, у нас получилось константное время обращения (Θ(1)) в первом паттерне поиска
+# Аналогично поиску перебором в массиве, у нас получился константый доступа (Θ(1)) в первом паттерне поиска
 # из-за того, что нужный элемент оказался первым
-# Время доступа сопоставимо со временем в варианте с массивом
-# Также, полный перебор списка (Θ(N)) оказался затратнее. Время на выполнение незначительно превышает
-# аналогичную операцию с массивом, будем считать, что увеличение времени - есть дополнительная обработка реализации Linked List
+# Время доступа соответствующее - перебор всего LinkedList() затратнее.
 
 # В связном списке, как и в массиве временная сложность поиска - O(N), ускоряют процесс поиска только частные случаи
 # на подобие того, как нужный нам элемент оказался первым
